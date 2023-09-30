@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class COnOffSwitch : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
+    Button[] buttons;
     private bool[] isActive;
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<Button>();
         isActive = new bool[buttons.Length];
         foreach (Button button in buttons)
         {
@@ -45,7 +46,7 @@ public class COnOffSwitch : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            isActive[i] = this.isActive[i];
+            this.isActive[i] = isActive[i];
         }
     }
 }

@@ -1,10 +1,9 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CRotatingSwitch : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
+    private Button[] buttons;
 
     const float rotationStep = 45.0f;
     private int[] position;
@@ -12,6 +11,7 @@ public class CRotatingSwitch : MonoBehaviour
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<Button>(); // Находим все кнопки в дочерних объектах
         position = new int[buttons.Length];
         currentRotation = new float[buttons.Length];
         GetSelectedButton();
@@ -25,7 +25,6 @@ public class CRotatingSwitch : MonoBehaviour
             int buttonIndex = i;
             buttonComponent.onClick.AddListener(() => RotateSwitch(buttonIndex));
         }
-
     }
 
     public void RotateSwitch(int index)

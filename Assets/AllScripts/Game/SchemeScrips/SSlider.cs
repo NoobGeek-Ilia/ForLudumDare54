@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class SSlider : MonoBehaviour
 
     private void Start()
     {
+        sliders = GetComponentsInChildren<Slider>();
         SetStartValue();
     }
 

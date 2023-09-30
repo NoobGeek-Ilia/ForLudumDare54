@@ -1,30 +1,46 @@
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CParameter : MonoBehaviour
 {
-    [SerializeField] Toggle[] parameters;
+    Toggle[] parameters;
+    private bool[] isActive;
 
     void Start()
     {
-        GetSelectedButton();
-    }
+        parameters = GetComponentsInChildren<Toggle>();
+        isActive = new bool[parameters.Length]; // Инициализируем массив
 
-    void GetSelectedButton()
-    {
+        SetStartValue();
+
         for (int i = 0; i < parameters.Length; i++)
         {
             Toggle param = parameters[i];
-            int buttonIndex = i;
-            param.onValueChanged.AddListener((value) => ToggleValueChanged());
+            int toggleIndex = i;
+            param.onValueChanged.AddListener((value) => ToggleValueChanged(toggleIndex, value));
         }
     }
 
-    void ToggleValueChanged()
+    void SetStartValue()
     {
         for (int i = 0; i < parameters.Length; i++)
         {
-            string message = parameters[i].isOn ? "включена" : "выключена";
+            parameters[i].isOn = false; // Устанавливаем все Toggle в положение "выключено"
+        }
+    }
+
+    void ToggleValueChanged(int index, bool value)
+    {
+        isActive[index] = value;
+        LogAllToggleStates();
+    }
+
+    void LogAllToggleStates()
+    {
+        for (int i = 0; i < parameters.Length; i++)
+        {
+            string message = isActive[i] ? "включена" : "выключена";
             Debug.Log($"Ячейка {i}: галочка {message}");
         }
     }

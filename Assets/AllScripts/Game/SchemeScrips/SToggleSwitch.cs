@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SToggleSwitch : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
+    private Button[] buttons;
     [SerializeField] Sprite left;
     [SerializeField] Sprite right;
 
@@ -11,6 +11,7 @@ public class SToggleSwitch : MonoBehaviour
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<Button>();
         isRight = new bool[buttons.Length];
         SetStartValue();
     }

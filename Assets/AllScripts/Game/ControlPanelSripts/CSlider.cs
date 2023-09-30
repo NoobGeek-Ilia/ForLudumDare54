@@ -1,26 +1,28 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CSlider : MonoBehaviour
 {
-    public Slider[] sliders;
-    private float[] sliderValues; // Массив для хранения значений слайдеров
+    private Slider[] sliders;
+    private float[] sliderValues;
 
     private void Start()
     {
-        sliderValues = new float[sliders.Length]; // Инициализируем массив
+        // Найдем все слайдеры в родительском объекте
+        sliders = GetComponentsInChildren<Slider>();
+
+        sliderValues = new float[sliders.Length];
 
         for (int i = 0; i < sliders.Length; i++)
         {
-            int index = i; // Захватываем значение i в переменную index
+            int index = i;
             sliders[i].onValueChanged.AddListener((float value) => OnSliderValueChanged(index, value));
         }
     }
 
     void OnSliderValueChanged(int sliderIndex, float value)
     {
-        sliderValues[sliderIndex] = value; // Сохраняем значение слайдера в массиве
+        sliderValues[sliderIndex] = value;
 
         Debug.Log("Текущее значение слайдера " + sliderIndex + ": " + value);
     }

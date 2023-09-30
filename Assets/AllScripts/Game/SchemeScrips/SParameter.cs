@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class SParameter : MonoBehaviour
 {
-    [SerializeField] Toggle[] parameters;
+    private Toggle[] parameters;
+    private bool[] isActive;
 
     void Start()
     {
+        parameters = GetComponentsInChildren<Toggle>();
+        isActive = new bool[parameters.Length];
         SetStartValue();
     }
 
@@ -16,6 +19,7 @@ public class SParameter : MonoBehaviour
         for (int i = 0; i < parameters.Length; i++)
         {
             float value = Random.value;
+            isActive[i] = value > 0.5f;
             parameters[i].isOn = value > 0.5f;
         }
     }

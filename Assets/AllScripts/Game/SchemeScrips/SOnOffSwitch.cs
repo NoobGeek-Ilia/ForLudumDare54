@@ -3,14 +3,16 @@ using UnityEngine.UI;
 
 public class SOnOffSwitch : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
+    private Button[] buttons; // Заменяем [SerializeField] на private
     private bool[] isActive;
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<Button>(); // Находим все кнопки в дочерних объектах
         isActive = new bool[buttons.Length];
         SetStartValue();
     }
+
     internal void SetStartValue()
     {
         for (int i = 0; i < buttons.Length; i++)

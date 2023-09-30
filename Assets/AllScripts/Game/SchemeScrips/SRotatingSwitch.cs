@@ -3,13 +3,14 @@ using UnityEngine.UI;
 
 public class SRotatingSwitch : MonoBehaviour
 {
-    [SerializeField] Button[] buttons;
+    private Button[] buttons;
 
     const int maxValue = 7;
     private int[] position;
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<Button>();
         position = new int[buttons.Length];
         SetStartValue();
     }
