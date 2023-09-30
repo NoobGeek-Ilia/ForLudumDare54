@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    readonly int[,] buttonNum = 
+    internal protected readonly static int[,] buttonNum = 
     { 
         { 5, 3, 4, 5, 6, 7, 8, 12 }, //onof
         { 3, 1, 2, 2, 3, 3, 4, 4 },  //toggle
@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
         { 5, 1, 2, 2, 2, 4, 6, 6 },  //par
         { 2, 1, 1, 1, 2, 2, 2, 2 }   //slide
     }; 
-    internal protected int levelNum;
+    internal protected static int levelNum { get; private set; }
     //OnOffSwitchBox;
     //ToggleSwitchBox;
     //RotatingSwitchBox;

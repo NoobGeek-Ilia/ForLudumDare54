@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CParameter : MonoBehaviour
 {
     Toggle[] parameters;
-    private bool[] isActive;
+    internal protected static bool[] isActive;
 
     void Start()
     {

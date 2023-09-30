@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SParameter : MonoBehaviour
 {
     private Toggle[] parameters;
-    private bool[] isActive;
+    internal protected static bool[] isActive;
 
     void Start()
     {

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CFloorButtons : MonoBehaviour
 {
     public Button[] buttons;
-    private int currFloorIndex;
+    internal protected static int currFloorIndex;
     private void Start()
     {
         foreach (Button button in buttons)

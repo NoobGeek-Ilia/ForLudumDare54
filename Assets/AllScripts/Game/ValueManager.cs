@@ -1,41 +1,72 @@
-using UnityEngine.UI;
+
+using UnityEngine;
 
 public class ValueManager
 {
-    private static bool[,] ToggleSwitchIsRight;
-
-
-    internal protected static void SetValue(ButtonTipe tipe, bool[] value)
+    internal protected bool EqualityCheck()
     {
-        switch (tipe)
+        if (ParameterCheck() && RotatingSwitchCheck() && OnOffSwitchCheck()
+            && SliderCheck() && FloorButtons() && ToggleSwitch())
+            return true;
+        return false;
+    }
+    internal protected bool ParameterCheck()
+    {
+        for (int i = 0; i < GameManager.buttonNum[3, GameManager.levelNum]; i++)
         {
-            case ButtonTipe.COnOffSwitch:
-
-                break;
-            case ButtonTipe.CToggleSwitch:
-                
-                break;
-            case ButtonTipe.CParemeter:
-                break;
+            if (SParameter.isActive[i] != CParameter.isActive[i])
+                return false;
         }
+        return true;
+    }
+    internal protected bool RotatingSwitchCheck()
+    {
+        for (int i = 0; i < GameManager.buttonNum[2, GameManager.levelNum]; i++)
+        {
+            if (SRotatingSwitch.position[i] != CRotatingSwitch.position[i])
+                return false;
+        }
+        return true;
     }
 
-    internal protected static void SetValue(ButtonTipe tipe, int[] value)
+    internal protected bool OnOffSwitchCheck()
     {
-
+        for (int i = 0; i < GameManager.buttonNum[0, GameManager.levelNum]; i++)
+        {
+            if (SOnOffSwitch.isActive[i] != COnOffSwitch.isActive[i])
+                return false;
+        }
+        return true;
     }
 
-    internal protected enum ButtonTipe
+    internal protected bool SliderCheck()
     {
-        COnOffSwitch,
-        CFloorButton,
-        CToggleSwitch,
-        CRotatingSwitch,
-        CParemeter,
-        SOnOffSwitch,
-        SFloorButton,
-        SToggleSwitch,
-        SRotatingSwitch,
-        SParemeter,
+        for (int i = 0; i < GameManager.buttonNum[4, GameManager.levelNum]; i++)
+        {
+            if (SSlider.sliderValues[i] != CSlider.sliderValues[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    internal protected bool FloorButtons()
+    {
+        if (SFloorButtons.currFloorIndex != CFloorButtons.currFloorIndex)
+            return false;
+        return true;
+    }
+
+    internal protected bool ToggleSwitch()
+    {
+        for (int i = 0; i < GameManager.buttonNum[1, GameManager.levelNum]; i++)
+        {
+            if (SToggleSwitch.isRight[i] != CToggleSwitch.isRight[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

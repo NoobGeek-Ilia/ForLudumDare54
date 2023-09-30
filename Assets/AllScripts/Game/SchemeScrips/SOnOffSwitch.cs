@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class SOnOffSwitch : MonoBehaviour
 {
     private Button[] buttons; // Заменяем [SerializeField] на private
-    private bool[] isActive;
+    internal protected static bool[] isActive;
 
     private void Start()
     {

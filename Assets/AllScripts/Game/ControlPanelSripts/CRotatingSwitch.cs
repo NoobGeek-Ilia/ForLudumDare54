@@ -6,7 +6,7 @@ public class CRotatingSwitch : MonoBehaviour
     private Button[] buttons;
 
     const float rotationStep = 45.0f;
-    private int[] position;
+    internal protected static int[] position;
     private float[] currentRotation;
 
     private void Start()

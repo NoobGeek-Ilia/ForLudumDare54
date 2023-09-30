@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class COnOffSwitch : MonoBehaviour
 {
     Button[] buttons;
-    private bool[] isActive;
+    internal protected static bool[] isActive;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class COnOffSwitch : MonoBehaviour
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            this.isActive[i] = isActive[i];
+            COnOffSwitch.isActive[i] = isActive[i];
         }
     }
 }

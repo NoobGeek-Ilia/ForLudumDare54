@@ -7,7 +7,7 @@ public class SToggleSwitch : MonoBehaviour
     [SerializeField] Sprite left;
     [SerializeField] Sprite right;
 
-    private bool[] isRight;
+    internal protected static bool[] isRight;
 
     private void Start()
     {

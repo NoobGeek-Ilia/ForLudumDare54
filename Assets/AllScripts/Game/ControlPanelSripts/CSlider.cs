@@ -4,13 +4,11 @@ using UnityEngine.UI;
 public class CSlider : MonoBehaviour
 {
     private Slider[] sliders;
-    private float[] sliderValues;
+    internal protected static float[] sliderValues;
 
     private void Start()
     {
-        // Найдем все слайдеры в родительском объекте
         sliders = GetComponentsInChildren<Slider>();
-
         sliderValues = new float[sliders.Length];
 
         for (int i = 0; i < sliders.Length; i++)
