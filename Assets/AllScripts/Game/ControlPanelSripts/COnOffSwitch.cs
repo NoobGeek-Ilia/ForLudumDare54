@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SOnOffSwitch : MonoBehaviour
+public class COnOffSwitch : MonoBehaviour
 {
     [SerializeField] Button[] buttons;
     private bool[] isActive;
@@ -38,6 +38,14 @@ public class SOnOffSwitch : MonoBehaviour
             Button buttonComponent = buttons[i].GetComponent<Button>();
             int buttonIndex = i;
             buttonComponent.onClick.AddListener(() => ChangeColor(buttonIndex));
+        }
+    }
+
+    internal protected void SetButtValue(bool[] isActive)
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            isActive[i] = this.isActive[i];
         }
     }
 }

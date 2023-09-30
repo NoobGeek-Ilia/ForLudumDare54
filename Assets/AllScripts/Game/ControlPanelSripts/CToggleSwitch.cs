@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SToggleSwitch : MonoBehaviour
+public class CToggleSwitch : MonoBehaviour
 {
     [SerializeField] Button[] buttons;
     [SerializeField] Sprite left;

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-public class SFloorButtons : MonoBehaviour
+public class CFloorButtons : MonoBehaviour
 {
     public Button[] buttons;
     private int currFloorIndex;

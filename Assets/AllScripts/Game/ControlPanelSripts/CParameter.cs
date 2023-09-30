@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SParameter : MonoBehaviour
+public class CParameter : MonoBehaviour
 {
     [SerializeField] Toggle[] parameters;
 

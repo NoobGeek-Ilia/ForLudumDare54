@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SRotatingSwitch : MonoBehaviour
+public class CRotatingSwitch : MonoBehaviour
 {
     [SerializeField] Button[] buttons;
 
