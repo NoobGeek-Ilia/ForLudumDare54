@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -8,10 +9,11 @@ public class CharacterAnimation : MonoBehaviour
     public Vector3[] targetPositions; // Массив целевых позиций
     [SerializeField] Animator animator;
     int animState;
-    [SerializeField] Transform[] elevator;
+    [SerializeField] Transform[] target;
     [SerializeField] Transform runPoint;
-
-    // Новые переменные для бега по кругу
+    [SerializeField] Door door;
+    internal protected Action onButtonPressed;
+    [SerializeField] CharacterLiveController characterLiveController;
     public float rotationSpeed = 0.1f;
     private float angle = 0f;
 
@@ -19,6 +21,13 @@ public class CharacterAnimation : MonoBehaviour
     void Start()
     {
         StartCoroutine(PlayAnimation());
+        door.onDoorOpened += () =>
+        {
+            Debug.Log("goAWAAAAAAY");
+            animator.SetBool("Run", false);
+            StartCoroutine(WalkToTarget(target[1].position));
+        };
+        characterLiveController.onDead += () => { animator.SetBool("Run", false); animator.SetBool("Fell", true); };
     }
 
     IEnumerator PlayAnimation()
@@ -29,11 +38,13 @@ public class CharacterAnimation : MonoBehaviour
             {
                 case 0:
                     //goToElevator + pressButton
-                    yield return StartCoroutine(WalkToTarget(elevator[0].position));    
+                    yield return StartCoroutine(WalkToTarget(target[0].position));    
                     animator.SetBool("PressButton", true);
+                    
                     break;
                 case 1:
                     //worry
+                    onButtonPressed?.Invoke();
                     animator.SetBool("Worry", true);
                     yield return new WaitForSeconds(2f);
                     animator.SetBool("Worry", false);
