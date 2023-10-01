@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class SSlider : MonoBehaviour
 {
-    public Slider[] sliders;
+    private Slider[] sliders;
     internal protected static int[] sliderValues;
 
     private void Start()
@@ -16,6 +16,11 @@ public class SSlider : MonoBehaviour
             sliderValues[i] = 0;
         }
         SetStartValue();
+
+        for (int i = 0; i < sliders.Length; i++)
+        {
+            Debug.Log($"Текущее значение правого слайдера {sliderValues[i]}");
+        }
     }
 
     void SetStartValue()
@@ -25,6 +30,7 @@ public class SSlider : MonoBehaviour
             int randomValue = Random.Range(0, (int)sliders[i].maxValue + 1);
             sliderValues[i] = randomValue;
             sliders[i].value = sliderValues[i];
+            
         }
     }
 }

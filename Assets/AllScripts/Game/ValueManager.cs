@@ -10,7 +10,7 @@ public class ValueManager
             return true;
         return false;
     }
-    internal protected bool ParameterCheck()
+    private bool ParameterCheck()
     {
         for (int i = 0; i < GameManager.buttonNum[3, GameManager.levelNum]; i++)
         {
@@ -19,7 +19,7 @@ public class ValueManager
         }
         return true;
     }
-    internal protected bool RotatingSwitchCheck()
+    private bool RotatingSwitchCheck()
     {
         for (int i = 0; i < GameManager.buttonNum[2, GameManager.levelNum]; i++)
         {
@@ -29,7 +29,7 @@ public class ValueManager
         return true;
     }
 
-    internal protected bool OnOffSwitchCheck()
+    private bool OnOffSwitchCheck()
     {
         for (int i = 0; i < GameManager.buttonNum[0, GameManager.levelNum]; i++)
         {
@@ -38,8 +38,8 @@ public class ValueManager
         }
         return true;
     }
-
-    internal protected bool SliderCheck()
+    
+    private bool SliderCheck()
     {
         for (int i = 0; i < GameManager.buttonNum[4, GameManager.levelNum]; i++)
         {
@@ -51,14 +51,14 @@ public class ValueManager
         return true;
     }
 
-    internal protected bool FloorButtons()
+    private bool FloorButtons()
     {
         if (SFloorButtons.currFloorIndex != CFloorButtons.currFloorIndex)
             return false;
         return true;
     }
 
-    internal protected bool ToggleSwitch()
+    private bool ToggleSwitch()
     {
         for (int i = 0; i < GameManager.buttonNum[1, GameManager.levelNum]; i++)
         {

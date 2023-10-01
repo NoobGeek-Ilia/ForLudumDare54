@@ -10,7 +10,6 @@ public class CSlider : MonoBehaviour
     {
         sliders = GetComponentsInChildren<Slider>();
         sliderValues = new float[sliders.Length];
-
         for (int i = 0; i < sliders.Length; i++)
         {
             int index = i;
@@ -21,7 +20,5 @@ public class CSlider : MonoBehaviour
     void OnSliderValueChanged(int sliderIndex, float value)
     {
         sliderValues[sliderIndex] = value;
-
-        Debug.Log("Текущее значение слайдера " + sliderIndex + ": " + value);
     }
 }
