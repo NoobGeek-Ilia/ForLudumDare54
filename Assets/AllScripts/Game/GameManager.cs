@@ -9,8 +9,10 @@ public class GameManager : MonoBehaviour
         { 3, 2, 2, 3, 3, 4, 5, 6 },  //rot
         { 5, 1, 2, 2, 2, 4, 6, 6 },  //par
         { 2, 1, 1, 1, 2, 2, 2, 2 }   //slide
-    }; 
+    };
+
     internal protected static int levelNum { get; private set; }
+    internal protected static int currState;
     //OnOffSwitchBox;
     //ToggleSwitchBox;
     //RotatingSwitchBox;
