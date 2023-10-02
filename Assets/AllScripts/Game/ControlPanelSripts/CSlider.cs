@@ -21,5 +21,6 @@ public class CSlider : MonoBehaviour
     private void OnSliderValueChanged(int sliderIndex, float value)
     {
         sliderValues[sliderIndex] = value;
+        SoundManager.instance.PlaySFX("SliderButton");
     }
 }

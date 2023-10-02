@@ -28,6 +28,7 @@ public class CToggleSwitch : MonoBehaviour
         {
             Debug.Log($"{i}: {isRight[i]}");
         }
+        SoundManager.instance.PlaySFX("ToggleButton");
     }
 
     private void GetSelectedButton()

@@ -23,10 +23,13 @@ public class OpenDoorButton : MonoBehaviour
             Debug.Log("OK");
             doorIsOpen = true;
             schemePanel.SetActive(false);
-            GameManager.levelNum++;
+
         }
         else
+        {
             Debug.Log("ERROR");
+            SoundManager.instance.PlaySFX("ErrorEffect");
+        }
 
         Debug.Log($"doorIsOpen: {doorIsOpen}");
     }

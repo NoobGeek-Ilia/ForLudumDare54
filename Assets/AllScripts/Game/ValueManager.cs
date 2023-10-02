@@ -13,7 +13,7 @@ public class ValueManager
     internal protected bool ParameterCheck()
     {
 
-        for (int i = 0; i < GameManager.buttonNum[3, GameManager.levelNum]; i++)
+        for (int i = 0; i < GameManager.buttonNum[3, GameManager.LevelNum]; i++)
         {
             if (SParameter.isActive[i] != CParameter.isActive[i])
                 return false;
@@ -23,7 +23,7 @@ public class ValueManager
     }
     private bool RotatingSwitchCheck()
     {
-        for (int i = 0; i < GameManager.buttonNum[2, GameManager.levelNum]; i++)
+        for (int i = 0; i < GameManager.buttonNum[2, GameManager.LevelNum]; i++)
         {
             if (SRotatingSwitch.position[i] != CRotatingSwitch.position[i])
                 return false;
@@ -33,7 +33,7 @@ public class ValueManager
 
     private bool OnOffSwitchCheck()
     {
-        for (int i = 0; i < GameManager.buttonNum[0, GameManager.levelNum]; i++)
+        for (int i = 0; i < GameManager.buttonNum[0, GameManager.LevelNum]; i++)
         {
             if (SOnOffSwitch.isActive[i] != COnOffSwitch.isActive[i])
                 return false;
@@ -43,7 +43,7 @@ public class ValueManager
     
     private bool SliderCheck()
     {
-        for (int i = 0; i < GameManager.buttonNum[4, GameManager.levelNum]; i++)
+        for (int i = 0; i < GameManager.buttonNum[4, GameManager.LevelNum]; i++)
         {
             if (SSlider.sliderValues[i] != CSlider.sliderValues[i])
             {
@@ -62,7 +62,7 @@ public class ValueManager
 
     private bool ToggleSwitch()
     {
-        for (int i = 0; i < GameManager.buttonNum[1, GameManager.levelNum]; i++)
+        for (int i = 0; i < GameManager.buttonNum[1, GameManager.LevelNum]; i++)
         {
             if (SToggleSwitch.isRight[i] != CToggleSwitch.isRight[i])
             {

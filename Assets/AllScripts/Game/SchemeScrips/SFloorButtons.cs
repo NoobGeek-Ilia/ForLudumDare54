@@ -5,13 +5,14 @@ public class SFloorButtons : MonoBehaviour
     public Button[] buttons;
     internal protected static int currFloorIndex;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         SetStartValue();
     }
 
     internal protected void SetStartValue()
     {
+        Debug.Log($"in floor butt {buttons} elements");
         foreach (Button button in buttons)
         {
             button.image.color = Color.gray;

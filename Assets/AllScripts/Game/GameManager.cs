@@ -22,8 +22,21 @@ public class GameManager : MonoBehaviour
         { 1, 1, 2, 2, 2, 4, 6, 6 },  //par
         { 1, 1, 1, 1, 2, 2, 2, 2 }   //slide
     };
+    private static int levelNum;
 
-    internal protected static int levelNum { get; set; } = 0;
+    internal protected static int LevelNum 
+    { 
+        get
+        {
+            return levelNum;
+        }
+        set
+        {
+            if(value > buttonNum.GetLength(1))
+                levelNum = 0;
+            levelNum = value;
+        }
+    }
     internal protected static int currState;
 
     [SerializeField] Transform[] parentBox;
@@ -40,11 +53,16 @@ public class GameManager : MonoBehaviour
         door.onDoorClosed += () =>
         {
             animator.SetBool("isActive", true);
+            
         };
-        door.onDoorOpened += () => { animator.SetBool("isActive", false);  };
+        door.onDoorOpened += () => { animator.SetBool("isActive", false);   };
         characterLiveController.onDead += () => StartCoroutine(OpenGameOverPanel());
         gameOver = gameoverPanel.GetComponent<GameOverPanel>();
         gameOver.onReseted += ResetLevel;
+        openDoorButton.onSystemIsFixed += () =>
+        {
+            LevelNum++;
+        };
     }
     IEnumerator RemoveAndSetButtons()
     {
@@ -86,7 +104,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetLevel()
     {
-        levelNum = 0;
+        LevelNum = 0;
         animator.SetBool("isActive", false);
         schemePanel.SetActive(false);
     }

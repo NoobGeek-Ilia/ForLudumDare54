@@ -39,5 +39,6 @@ public class CRotatingSwitch : MonoBehaviour
         {
             Debug.Log($"{i}: {position[i]}");
         }
+        SoundManager.instance.PlaySFX("RotateButton");
     }
 }

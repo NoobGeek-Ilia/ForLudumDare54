@@ -29,6 +29,7 @@ public class COnOffSwitch : MonoBehaviour
         {
             Debug.Log($"{i}: {isActive[i]}");
         }
+        SoundManager.instance.PlaySFX("OnOffButton");
     }
 
     private void GetSelectedButton()

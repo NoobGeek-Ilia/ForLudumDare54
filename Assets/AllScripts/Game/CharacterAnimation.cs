@@ -48,6 +48,7 @@ public class CharacterAnimation : MonoBehaviour
                     yield return StartCoroutine(WalkToTarget(target[0].position));    
                     animator.SetBool("PressButton", true);
                     animator.SetBool("Saved", false);
+                    SoundManager.instance.PlaySFX("StuckEffect");
 
                     break;
                 case 1:

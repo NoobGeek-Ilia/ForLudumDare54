@@ -22,5 +22,6 @@ public class CFloorButtons : MonoBehaviour
         currButton.image.color = Color.green;
         currFloorIndex = Array.IndexOf(buttons, currButton);
         Debug.Log(currFloorIndex);
+        SoundManager.instance.PlaySFX("FloorButton");
     }
 }

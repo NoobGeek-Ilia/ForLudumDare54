@@ -16,6 +16,7 @@ public class InitPanelsButtons : MonoBehaviour
     [SerializeField] SRotatingSwitch SrotatingSwitch;
     [SerializeField] SSlider Sslider;
     [SerializeField] SToggleSwitch StoggleSwitch;
+    [SerializeField] SFloorButtons SfloorButtons;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class InitPanelsButtons : MonoBehaviour
             SrotatingSwitch.InitBoxButtons();
             Sslider.InitBoxButtons();
             StoggleSwitch.InitBoxButtons();
+            SfloorButtons.InitBoxButtons();
         };
     }
 

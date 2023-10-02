@@ -20,7 +20,6 @@ public class SParameter : MonoBehaviour
             isActive[i] = value > 0.5f;
             parameters[i].isOn = value > 0.5f;
             Debug.Log($"parametr {isActive[i]}");
-            //Debug.Log($"parametr {parameters.Length}");
         }
     }
 }

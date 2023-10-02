@@ -24,6 +24,7 @@ public class Door : MonoBehaviour
     private IEnumerator OpenCoroutine(bool open)
     {//все перепутано
         Debug.Log("corunine");
+        SoundManager.instance.PlaySFX("OpenDoorEffect");
         Vector3 startPosRight = rightDoor.position;
         Vector3 startPosLeft = leftDoor.position;
         Vector3 endPosRight, endPosLeft;
@@ -60,5 +61,6 @@ public class Door : MonoBehaviour
             onDoorOpened?.Invoke();
             
         }
+        
     }
 }
