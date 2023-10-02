@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         LevelNum = 0;
         counter = 0;
+        counterTxt.text = counter.ToString();
         animator.SetBool("isActive", false);
         schemePanel.SetActive(false);
         characterLiveController.ResetLive();
