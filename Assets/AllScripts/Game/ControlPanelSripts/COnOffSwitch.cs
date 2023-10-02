@@ -6,7 +6,7 @@ public class COnOffSwitch : MonoBehaviour
     Button[] buttons;
     internal protected static bool[] isActive;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>();
         isActive = new bool[buttons.Length];
@@ -16,8 +16,7 @@ public class COnOffSwitch : MonoBehaviour
         }
         GetSelectedButton();
     }
-
-    public void ChangeColor(int index)
+    private void ChangeColor(int index)
     {
         isActive[index] = !isActive[index];
         if (isActive[index])
@@ -32,21 +31,13 @@ public class COnOffSwitch : MonoBehaviour
         }
     }
 
-    void GetSelectedButton()
+    private void GetSelectedButton()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
             Button buttonComponent = buttons[i].GetComponent<Button>();
             int buttonIndex = i;
             buttonComponent.onClick.AddListener(() => ChangeColor(buttonIndex));
-        }
-    }
-
-    internal protected void SetButtValue(bool[] isActive)
-    {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            COnOffSwitch.isActive[i] = isActive[i];
         }
     }
 }

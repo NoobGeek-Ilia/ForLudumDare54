@@ -1,13 +1,11 @@
-using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CParameter : MonoBehaviour
 {
-    Toggle[] parameters;
+    private Toggle[] parameters;
     internal protected static bool[] isActive;
-
-    void Start()
+    internal protected void InitBoxButtons()
     {
         parameters = GetComponentsInChildren<Toggle>();
         isActive = new bool[parameters.Length]; // Инициализируем массив
@@ -22,7 +20,7 @@ public class CParameter : MonoBehaviour
         }
     }
 
-    void SetStartValue()
+    private void SetStartValue()
     {
         for (int i = 0; i < parameters.Length; i++)
         {
@@ -30,13 +28,13 @@ public class CParameter : MonoBehaviour
         }
     }
 
-    void ToggleValueChanged(int index, bool value)
+    private void ToggleValueChanged(int index, bool value)
     {
         isActive[index] = value;
         LogAllToggleStates();
     }
 
-    void LogAllToggleStates()
+    private void LogAllToggleStates()
     {
         for (int i = 0; i < parameters.Length; i++)
         {

@@ -7,27 +7,34 @@ public class CharacterAnimation : MonoBehaviour
 {
     float moveSpeed = 0.8f;
     public Vector3[] targetPositions; // Массив целевых позиций
+    Quaternion startRotation;
     [SerializeField] Animator animator;
     int animState;
     [SerializeField] Transform[] target;
     [SerializeField] Transform runPoint;
     [SerializeField] Door door;
     internal protected Action onButtonPressed;
-    [SerializeField] CharacterLiveController characterLiveController;
-    public float rotationSpeed = 0.1f;
-    private float angle = 0f;
+    internal protected Action onSaved;
+    [SerializeField] OpenDoorButton openDoorButton;
+    [SerializeField] GameManager gameManager;
 
+    [SerializeField] CharacterLiveController characterLiveController;
+    [SerializeField] GameOverPanel gameOverPanel;
+
+   
+
+    private void Update()
+    {
+    }
 
     void Start()
     {
+        startRotation = Quaternion.Euler(0, -69.761f, 0);
         StartCoroutine(PlayAnimation());
-        door.onDoorOpened += () =>
-        {
-            Debug.Log("goAWAAAAAAY");
-            animator.SetBool("Run", false);
-            StartCoroutine(WalkToTarget(target[1].position));
-        };
+        openDoorButton.onSystemIsFixed += () => StartCoroutine(WalkToTarget(target[1].position));
         characterLiveController.onDead += () => { animator.SetBool("Run", false); animator.SetBool("Fell", true); };
+        onSaved += ResetCharacter;
+        gameOverPanel.onReseted += ResetCharacter;
     }
 
     IEnumerator PlayAnimation()
@@ -40,10 +47,12 @@ public class CharacterAnimation : MonoBehaviour
                     //goToElevator + pressButton
                     yield return StartCoroutine(WalkToTarget(target[0].position));    
                     animator.SetBool("PressButton", true);
-                    
+                    animator.SetBool("Saved", false);
+
                     break;
                 case 1:
                     //worry
+                    animator.SetBool("PressButton", false);
                     onButtonPressed?.Invoke();
                     animator.SetBool("Worry", true);
                     yield return new WaitForSeconds(2f);
@@ -63,20 +72,41 @@ public class CharacterAnimation : MonoBehaviour
         }
     }
 
+
     IEnumerator WalkToTarget(Vector3 target)
     {
         animator.SetBool("Walk", true);
-        while (Vector3.Distance(transform.position, target) > 0.01f)
+        bool reachedTarget = false;
+
+        while (!reachedTarget)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, target) <= 0.01f)
+            {
+                reachedTarget = true;
+            }
+
             yield return null;
         }
+
         animator.SetBool("Walk", false);
+
+        if (target == this.target[1].position)
+            onSaved?.Invoke();
     }
 
-    public void OnAnimation()
+
+    public void OnAnimation() => animState++;
+
+    private void ResetCharacter()
     {
-        animState++;
-        animator.SetBool("PressButton", false);
+        animState = 0;
+        animator.SetBool("Worry", false);
+        animator.SetBool("Fell", false);
+        animator.SetBool("Run", false);
+        animator.SetBool("Saved", true);
+        transform.position = target[1].position;
+        transform.rotation = startRotation;
+        StartCoroutine(PlayAnimation());
     }
 }

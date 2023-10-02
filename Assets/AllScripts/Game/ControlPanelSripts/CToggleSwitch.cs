@@ -9,14 +9,14 @@ public class CToggleSwitch : MonoBehaviour
 
     internal protected static bool[] isRight;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>(); // Находим все кнопки в дочерних объектах
         isRight = new bool[buttons.Length];
         GetSelectedButton();
     }
 
-    public void ChangeSprite(int index)
+    private void ChangeSprite(int index)
     {
         isRight[index] = !isRight[index];
         if (isRight[index])
@@ -30,7 +30,7 @@ public class CToggleSwitch : MonoBehaviour
         }
     }
 
-    void GetSelectedButton()
+    private void GetSelectedButton()
     {
         for (int i = 0; i < buttons.Length; i++)
         {

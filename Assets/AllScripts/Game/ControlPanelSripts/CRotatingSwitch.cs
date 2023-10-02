@@ -9,7 +9,7 @@ public class CRotatingSwitch : MonoBehaviour
     internal protected static int[] position;
     private float[] currentRotation;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>(); // Находим все кнопки в дочерних объектах
         position = new int[buttons.Length];
@@ -17,7 +17,7 @@ public class CRotatingSwitch : MonoBehaviour
         GetSelectedButton();
     }
 
-    void GetSelectedButton()
+    private void GetSelectedButton()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -27,7 +27,7 @@ public class CRotatingSwitch : MonoBehaviour
         }
     }
 
-    public void RotateSwitch(int index)
+    private void RotateSwitch(int index)
     {
         currentRotation[index] -= rotationStep;
         Quaternion targetRotation = Quaternion.Euler(0, 0, currentRotation[index]);

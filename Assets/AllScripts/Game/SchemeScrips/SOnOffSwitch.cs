@@ -3,17 +3,17 @@ using UnityEngine.UI;
 
 public class SOnOffSwitch : MonoBehaviour
 {
-    private Button[] buttons; // Заменяем [SerializeField] на private
+    private Button[] buttons;
     internal protected static bool[] isActive;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
-        buttons = GetComponentsInChildren<Button>(); // Находим все кнопки в дочерних объектах
+        buttons = GetComponentsInChildren<Button>();
         isActive = new bool[buttons.Length];
         SetStartValue();
     }
 
-    internal void SetStartValue()
+    private void SetStartValue()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -23,6 +23,7 @@ public class SOnOffSwitch : MonoBehaviour
                 buttons[i].image.color = Color.green;
             else
                 buttons[i].image.color = Color.red;
+            Debug.Log($"onOff {isActive[i]}");
         }
     }
 }

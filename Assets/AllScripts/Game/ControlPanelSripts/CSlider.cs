@@ -6,7 +6,7 @@ public class CSlider : MonoBehaviour
     private Slider[] sliders;
     internal protected static float[] sliderValues;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         sliders = GetComponentsInChildren<Slider>();
         sliderValues = new float[sliders.Length];
@@ -14,10 +14,11 @@ public class CSlider : MonoBehaviour
         {
             int index = i;
             sliders[i].onValueChanged.AddListener((float value) => OnSliderValueChanged(index, value));
+            Debug.Log($"slider {sliderValues[i]}");
         }
     }
 
-    void OnSliderValueChanged(int sliderIndex, float value)
+    private void OnSliderValueChanged(int sliderIndex, float value)
     {
         sliderValues[sliderIndex] = value;
     }

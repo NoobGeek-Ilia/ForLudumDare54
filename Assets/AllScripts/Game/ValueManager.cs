@@ -10,12 +10,14 @@ public class ValueManager
             return true;
         return false;
     }
-    private bool ParameterCheck()
+    internal protected bool ParameterCheck()
     {
+
         for (int i = 0; i < GameManager.buttonNum[3, GameManager.levelNum]; i++)
         {
             if (SParameter.isActive[i] != CParameter.isActive[i])
                 return false;
+            Debug.Log($"left: {CParameter.isActive[i]}, right: {SParameter.isActive[i]}");
         }
         return true;
     }

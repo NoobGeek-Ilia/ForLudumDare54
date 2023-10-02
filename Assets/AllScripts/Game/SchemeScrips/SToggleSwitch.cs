@@ -9,13 +9,14 @@ public class SToggleSwitch : MonoBehaviour
 
     internal protected static bool[] isRight;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>();
         isRight = new bool[buttons.Length];
         SetStartValue();
     }
-    internal void SetStartValue()
+
+    private void SetStartValue()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -25,6 +26,7 @@ public class SToggleSwitch : MonoBehaviour
                 buttons[i].image.sprite = right;
             else
                 buttons[i].image.sprite = left;
+            Debug.Log($"Toggle {isRight[i]}");
         }
     }
 }

@@ -12,15 +12,16 @@ public class Door : MonoBehaviour
     internal protected Action onDoorOpened;
     [SerializeField] CharacterAnimation characterAnimation;
     [SerializeField] OpenDoorButton openDoor;
+    [SerializeField] GameOverPanel gameOverPanel;
 
     private void Start()
     {
         characterAnimation.onButtonPressed += () => StartCoroutine(OpenCoroutine(true));
         openDoor.onSystemIsFixed += () => StartCoroutine(OpenCoroutine(false));
-
+        gameOverPanel.onReseted += () => StartCoroutine(OpenCoroutine(false));
     }
 
-    IEnumerator OpenCoroutine(bool open)
+    private IEnumerator OpenCoroutine(bool open)
     {//все перепутано
         Debug.Log("corunine");
         Vector3 startPosRight = rightDoor.position;

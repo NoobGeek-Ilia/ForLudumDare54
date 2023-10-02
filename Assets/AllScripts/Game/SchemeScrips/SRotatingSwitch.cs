@@ -8,20 +8,14 @@ public class SRotatingSwitch : MonoBehaviour
     const int maxValue = 7;
     internal protected static int[] position;
 
-    private void Start()
+    internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>();
         position = new int[buttons.Length];
         SetStartValue();
-
-        // Выводим значения элементов массива position
-        for (int i = 0; i < position.Length; i++)
-        {
-            Debug.Log("position[" + i + "] = " + position[i]);
-        }
     }
 
-    internal void SetStartValue()
+    private void SetStartValue()
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -30,6 +24,7 @@ public class SRotatingSwitch : MonoBehaviour
             int rotationValue = -45 * value;
             Quaternion targetRotation = Quaternion.Euler(0, 0, rotationValue);
             buttons[i].transform.rotation = targetRotation;
+            Debug.Log($"rotat {position[i]}");
         }
     }
 }

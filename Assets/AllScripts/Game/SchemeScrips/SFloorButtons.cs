@@ -4,12 +4,13 @@ public class SFloorButtons : MonoBehaviour
 {
     public Button[] buttons;
     internal protected static int currFloorIndex;
+
     private void Start()
     {
         SetStartValue();
     }
 
-    internal void SetStartValue()
+    internal protected void SetStartValue()
     {
         foreach (Button button in buttons)
         {

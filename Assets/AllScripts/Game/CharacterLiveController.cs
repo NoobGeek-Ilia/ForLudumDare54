@@ -8,7 +8,10 @@ public class CharacterLiveController : MonoBehaviour
     [SerializeField] Slider hpBar;
     [SerializeField] Door door;
     [SerializeField] GameObject liveBar;
-    int maxHp = 200;
+    [SerializeField] CharacterAnimation CharacterAnimation;
+    [SerializeField] GameOverPanel gameOverPanel;
+    [SerializeField] OpenDoorButton openDoorButton;
+    int maxHp = 400;
     int currHelth;
     int painLevelValue = 1;
 
@@ -21,21 +24,28 @@ public class CharacterLiveController : MonoBehaviour
         hpBar.maxValue = maxHp;
         hpBar.value = currHelth;
         door.onDoorClosed += StartHpController;
-        door.onDoorOpened += SaveCharacter;
+        openDoorButton.onSystemIsFixed += CalmDown;
+        gameOverPanel.onReseted += () =>
+        {
+            ResetLive();
+            liveBar.SetActive(false);
+        };
     }
 
     void StartHpController()
     {
-        painLevelValue = GameManager.levelNum / 3;
+        painLevelValue = 2;
         isPanic = true;
         liveBar.SetActive(true);
         StartCoroutine(HpController());
+
     }
 
-    void SaveCharacter()
+    void CalmDown()
     {
         isPanic = false;
         liveBar.SetActive(false);
+        ResetLive();
     }
 
     IEnumerator HpController()
@@ -48,5 +58,12 @@ public class CharacterLiveController : MonoBehaviour
         }
         if (currHelth <= 0)
             onDead?.Invoke();
+    }
+
+    private void ResetLive()
+    {
+        currHelth = maxHp;
+        hpBar.maxValue = maxHp;
+        hpBar.value = currHelth;
     }
 }
