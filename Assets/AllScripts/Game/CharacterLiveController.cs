@@ -27,8 +27,9 @@ public class CharacterLiveController : MonoBehaviour
         openDoorButton.onSystemIsFixed += CalmDown;
         gameOverPanel.onReseted += () =>
         {
-            ResetLive();
-            liveBar.SetActive(false);
+            Debug.Log("reseted");
+
+            
         };
     }
 
@@ -60,10 +61,11 @@ public class CharacterLiveController : MonoBehaviour
             onDead?.Invoke();
     }
 
-    private void ResetLive()
+    internal protected void ResetLive()
     {
         currHelth = maxHp;
         hpBar.maxValue = maxHp;
         hpBar.value = currHelth;
+        liveBar.SetActive(false);
     }
 }

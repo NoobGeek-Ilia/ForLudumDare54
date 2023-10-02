@@ -20,7 +20,7 @@ public class CharacterAnimation : MonoBehaviour
 
     [SerializeField] CharacterLiveController characterLiveController;
     [SerializeField] GameOverPanel gameOverPanel;
-
+    [SerializeField] GameObject PanicPic;
    
 
     private void Update()
@@ -59,12 +59,17 @@ public class CharacterAnimation : MonoBehaviour
                     yield return new WaitForSeconds(2f);
                     animator.SetBool("Worry", false);
                     animState++;
+                    
                     break;
                 case 2:
                 //Run
                     animator.SetBool("Run", true);
                     StartCoroutine(WalkToTarget(runPoint.position));
                     animState++;
+                    SoundManager.instance.musicSource.Stop();
+                    SoundManager.instance.PlayMusic("PanicBack");
+                    SoundManager.instance.PlaySFX("GirlPanic");
+                    PanicPic.SetActive(true);
                     break;
                 case 3:
 

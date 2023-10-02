@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] FillSchemePanel fillSchemePanel;
     [SerializeField] OpenDoorButton openDoorButton;
     [SerializeField] CharacterAnimation characterAnimation;
+    [SerializeField] TextMeshProUGUI counterTxt;
+    [SerializeField] GameObject PanicPic;
+    private int counter;
 
     internal protected readonly static int[,] buttonNum = 
     { 
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SoundManager.instance.PlayMusic("BackRelax");
         characterAnimation.onButtonPressed += () =>
         {
             StartCoroutine(RemoveAndSetButtons());
@@ -58,10 +63,18 @@ public class GameManager : MonoBehaviour
         door.onDoorOpened += () => { animator.SetBool("isActive", false);   };
         characterLiveController.onDead += () => StartCoroutine(OpenGameOverPanel());
         gameOver = gameoverPanel.GetComponent<GameOverPanel>();
-        gameOver.onReseted += ResetLevel;
+        gameOver.onReseted += () =>
+        {
+            ResetLevel();
+            PanicPic.SetActive(false);
+            SoundManager.instance.musicSource.Stop();
+            SoundManager.instance.PlayMusic("BackRelax");
+        };
         openDoorButton.onSystemIsFixed += () =>
         {
             LevelNum++;
+            counter++;
+            counterTxt.text = counter.ToString();
         };
     }
     IEnumerator RemoveAndSetButtons()
@@ -105,7 +118,9 @@ public class GameManager : MonoBehaviour
     private void ResetLevel()
     {
         LevelNum = 0;
+        counter = 0;
         animator.SetBool("isActive", false);
         schemePanel.SetActive(false);
+        characterLiveController.ResetLive();
     }
 }

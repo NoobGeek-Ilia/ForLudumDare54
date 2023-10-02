@@ -10,6 +10,7 @@ public class OpenDoorButton : MonoBehaviour
     internal protected Action onSystemIsFixed;
     [SerializeField] GameObject schemePanel;
     [SerializeField] Door door;
+    [SerializeField] GameObject PanicPic;
 
     private void Start()
     {
@@ -23,7 +24,9 @@ public class OpenDoorButton : MonoBehaviour
             Debug.Log("OK");
             doorIsOpen = true;
             schemePanel.SetActive(false);
-
+            SoundManager.instance.musicSource.Stop();
+            PanicPic.SetActive(false);
+            SoundManager.instance.PlayMusic("BackRelax");
         }
         else
         {

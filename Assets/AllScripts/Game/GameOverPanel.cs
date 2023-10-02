@@ -7,7 +7,8 @@ public class GameOverPanel : MonoBehaviour
     internal protected Action onReseted;
     public void CloseGameOverPanel()
     {
-        gameOverPanel.SetActive(false);
         onReseted?.Invoke();
+        gameOverPanel.SetActive(false);
+       
     }
 }

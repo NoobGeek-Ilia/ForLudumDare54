@@ -8,5 +8,6 @@ public class ShemeButton : MonoBehaviour
     public void OpenSchemePanel()
     {
         shchemePanel.SetActive(true);
+        SoundManager.instance.PlaySFX("OpenSchemeButton");
     }
 }
