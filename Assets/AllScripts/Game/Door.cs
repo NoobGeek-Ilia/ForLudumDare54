@@ -17,14 +17,22 @@ public class Door : MonoBehaviour
     private void Start()
     {
         characterAnimation.onButtonPressed += () => StartCoroutine(OpenCoroutine(true));
-        openDoor.onSystemIsFixed += () => StartCoroutine(OpenCoroutine(false));
-        gameOverPanel.onReseted += () => StartCoroutine(OpenCoroutine(false));
+        openDoor.onSystemIsFixed += () =>
+        {
+            StartCoroutine(OpenCoroutine(false));
+            SoundManager.instance.PlaySFX("OpenDoorEffect");
+        };
+        gameOverPanel.onReseted += () =>
+        {
+            StartCoroutine(OpenCoroutine(false));
+            SoundManager.instance.PlaySFX("OpenDoorEffect");
+        };
     }
 
     private IEnumerator OpenCoroutine(bool open)
     {//все перепутано
         Debug.Log("corunine");
-        SoundManager.instance.PlaySFX("OpenDoorEffect");
+        
         Vector3 startPosRight = rightDoor.position;
         Vector3 startPosLeft = leftDoor.position;
         Vector3 endPosRight, endPosLeft;

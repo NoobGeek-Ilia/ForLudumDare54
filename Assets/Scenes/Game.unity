@@ -4536,6 +4536,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: bbd2f841833061448ba680809a688f89, type: 3}
   - name: OpenDoorEffect
     clip: {fileID: 8300000, guid: 5ba0b56db9f57a942937278495bf3b1d, type: 3}
+  - name: ParameterButton
+    clip: {fileID: 8300000, guid: 6577e290efd53774c9a041f6c3e15192, type: 3}
   musicSource: {fileID: 45686460}
   sfxSource: {fileID: 174805071}
 --- !u!1 &929224621

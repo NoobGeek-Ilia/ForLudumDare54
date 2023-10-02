@@ -32,6 +32,7 @@ public class CParameter : MonoBehaviour
     {
         isActive[index] = value;
         LogAllToggleStates();
+        SoundManager.instance.PlaySFX("ParameterButton");
     }
 
     private void LogAllToggleStates()

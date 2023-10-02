@@ -5,6 +5,10 @@ public class SFloorButtons : MonoBehaviour
     public Button[] buttons;
     internal protected static int currFloorIndex;
 
+    private void Start()
+    {
+        SetStartValue();
+    }
     internal protected void InitBoxButtons()
     {
         SetStartValue();

@@ -32,6 +32,7 @@ public class SoundManager : MonoBehaviour
         else
             Debug.Log("Sound not found");
     }
+
     //
     //OnOffButton
     private void Awake()
