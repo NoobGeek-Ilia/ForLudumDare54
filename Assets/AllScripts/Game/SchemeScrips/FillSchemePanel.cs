@@ -14,7 +14,7 @@ public class FillSchemePanel : MonoBehaviour
     {
         door.onDoorClosed += () => boxIsFull = false;
     }
-    private void SetButtons()
+    public void SetButtons()
     {
         Debug.Log($"isFull: {boxIsFull}");
         if (!boxIsFull)

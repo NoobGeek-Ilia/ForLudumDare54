@@ -12,7 +12,7 @@ public class COnOffSwitch : MonoBehaviour
         isActive = new bool[buttons.Length];
         foreach (Button button in buttons)
         {
-            button.image.color = Color.red;
+            button.image.color = SpecialColors.GetFirstColor();
         }
         GetSelectedButton();
     }
@@ -20,11 +20,11 @@ public class COnOffSwitch : MonoBehaviour
     {
         isActive[index] = !isActive[index];
         if (isActive[index])
-            buttons[index].image.color = Color.green;
+            buttons[index].image.color = SpecialColors.GetSecondColor();
         else
-            buttons[index].image.color = Color.red;
+            buttons[index].image.color = SpecialColors.GetFirstColor();
 
-        
+
         for (int i = 0; i < buttons.Length; i++)
         {
             Debug.Log($"{i}: {isActive[i]}");

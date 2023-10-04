@@ -20,9 +20,9 @@ public class SOnOffSwitch : MonoBehaviour
             float value = Random.value;
             isActive[i] = value > 0.5f;
             if (isActive[i])
-                buttons[i].image.color = Color.green;
+                buttons[i].image.color = SpecialColors.GetSecondColor();
             else
-                buttons[i].image.color = Color.red;
+                buttons[i].image.color = SpecialColors.GetFirstColor();
             Debug.Log($"onOff {isActive[i]}");
         }
     }

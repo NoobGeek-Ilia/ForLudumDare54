@@ -18,7 +18,7 @@ public class OpenDoorButton : MonoBehaviour
     }
     public void SendMessageToTheDoor()
     {
-        if (valueManager.EqualityCheck())
+        if (valueManager.EqualityCheck() && !CharacterLiveController.playerIsDead)
         {
             onSystemIsFixed?.Invoke();
             Debug.Log("OK");

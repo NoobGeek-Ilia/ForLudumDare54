@@ -16,19 +16,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] CharacterAnimation characterAnimation;
     [SerializeField] TextMeshProUGUI counterTxt;
     [SerializeField] GameObject PanicPic;
+    [SerializeField] CFloorButtons floorButtons;
     private int counter;
 
     internal protected readonly static int[,] buttonNum = 
     { 
         { 2, 3, 4, 5, 6, 7, 8, 12 }, //onof
-        { 1, 1, 2, 2, 3, 3, 4, 4 },  //toggle
+        { 1, 1, 2, 2, 3, 3, 3, 3 },  //toggle
         { 1, 2, 2, 3, 3, 4, 5, 6 },  //rot
         { 1, 1, 2, 2, 2, 4, 6, 6 },  //par
-        { 1, 1, 1, 1, 2, 2, 2, 2 }   //slide
+        { 1, 1, 1, 1, 2, 2, 2, 4 }   //slide
     };
-    private static int levelNum;
+    private static int levelNum = 0;
 
-    internal protected static int LevelNum 
+    internal protected static int LevelNum
     { 
         get
         {
@@ -36,9 +37,10 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            if(value > buttonNum.GetLength(1))
-                levelNum = 0;
-            levelNum = value;
+            if(value > buttonNum.GetLength(1) - 1)
+                levelNum = buttonNum.GetLength(1) - 1;
+            else
+                levelNum = value;
         }
     }
     internal protected static int currState;
@@ -93,7 +95,8 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < buttonNum[i, levelNum]; j++)
             {
-                Instantiate(buttonPrefab[i], parentBox[i]);
+                GameObject button = Instantiate(buttonPrefab[i], parentBox[i]);
+                //button.transform.SetParent(parentBox[i], true);/
             }
         }
         onBoxFull?.Invoke();
@@ -113,6 +116,7 @@ public class GameManager : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+        floorButtons.ResertColor();
     }
 
     private void ResetLevel()

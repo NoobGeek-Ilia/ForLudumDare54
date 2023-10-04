@@ -11,15 +11,19 @@ public class CharacterLiveController : MonoBehaviour
     [SerializeField] CharacterAnimation CharacterAnimation;
     [SerializeField] GameOverPanel gameOverPanel;
     [SerializeField] OpenDoorButton openDoorButton;
+    [SerializeField] Image liveBarColor;
+
     int maxHp = 400;
     int currHelth;
     int painLevelValue = 1;
 
     internal protected Action onDead;
+    internal protected static bool playerIsDead;
     bool isPanic = false;
 
     private void Start()
     {
+        liveBarColor.color = SpecialColors.GetSecondColor();
         currHelth = maxHp;
         hpBar.maxValue = maxHp;
         hpBar.value = currHelth;
@@ -31,6 +35,7 @@ public class CharacterLiveController : MonoBehaviour
 
             
         };
+        onDead += () => playerIsDead = true;
     }
 
     void StartHpController()
@@ -67,5 +72,7 @@ public class CharacterLiveController : MonoBehaviour
         hpBar.maxValue = maxHp;
         hpBar.value = currHelth;
         liveBar.SetActive(false);
+        playerIsDead = false;
+        liveBarColor.color = SpecialColors.GetSecondColor();
     }
 }
