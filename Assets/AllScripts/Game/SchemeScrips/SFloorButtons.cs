@@ -25,6 +25,7 @@ public class SFloorButtons : MonoBehaviour
             button.image.color = Color.gray;
         }
         int value = Random.Range(0, buttons.Length);
+        currFloorIndex = value;
         buttons[currFloorIndex].image.color = SpecialColors.GetSecondColor();
     }
 }

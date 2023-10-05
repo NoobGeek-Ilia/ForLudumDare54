@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 
@@ -25,7 +26,7 @@ public class GameManager : MonoBehaviour
         { 1, 1, 2, 2, 3, 3, 3, 3 },  //toggle
         { 1, 2, 2, 3, 3, 4, 5, 6 },  //rot
         { 1, 1, 2, 2, 2, 4, 6, 6 },  //par
-        { 1, 1, 1, 1, 2, 2, 2, 4 }   //slide
+        { 1, 1, 1, 1, 2, 2, 3, 4 }   //slide
     };
     private static int levelNum = 0;
 
@@ -74,10 +75,19 @@ public class GameManager : MonoBehaviour
         };
         openDoorButton.onSystemIsFixed += () =>
         {
-            LevelNum++;
-            counter++;
-            counterTxt.text = counter.ToString();
+            LevelUp();
         };
+    }
+    void LevelUp()
+    {
+        counter++;
+        for (int i = 1; i < buttonNum.GetLength(1); i++)
+        {
+            if (counter == i * 4)
+                LevelNum++;
+        }
+        counterTxt.text = counter.ToString();
+        Debug.Log($"numlevel: {LevelNum}");
     }
     IEnumerator RemoveAndSetButtons()
     {

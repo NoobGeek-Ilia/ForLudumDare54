@@ -29,12 +29,6 @@ public class CharacterLiveController : MonoBehaviour
         hpBar.value = currHelth;
         door.onDoorClosed += StartHpController;
         openDoorButton.onSystemIsFixed += CalmDown;
-        gameOverPanel.onReseted += () =>
-        {
-            Debug.Log("reseted");
-
-            
-        };
         onDead += () => playerIsDead = true;
     }
 
