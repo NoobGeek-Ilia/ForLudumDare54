@@ -1,5 +1,5 @@
 # Claustrophobia
->Game Jam member at Ludum Dare 54 event
+>Game Jam member at [Ludum Dare 54 event](https://ldjam.com/events/ludum-dare/54/claustrophobia-3)
 
 In this game, your mission is to rescue inattentive passengers stuck in a malfunctioning elevator. 
 
