@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         counter++;
         for (int i = 1; i < buttonNum.GetLength(1); i++)
         {
-            if (counter == i * 4)
+            if (counter == i * 2)
                 LevelNum++;
         }
         counterTxt.text = counter.ToString();

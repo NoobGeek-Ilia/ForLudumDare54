@@ -23,7 +23,7 @@ public class CharacterLiveController : MonoBehaviour
 
     private void Start()
     {
-        liveBarColor.color = SpecialColors.GetSecondColor();
+        liveBarColor.color = SpecialColors.GetFirstColor();
         currHelth = maxHp;
         hpBar.maxValue = maxHp;
         hpBar.value = currHelth;
@@ -67,6 +67,6 @@ public class CharacterLiveController : MonoBehaviour
         hpBar.value = currHelth;
         liveBar.SetActive(false);
         playerIsDead = false;
-        liveBarColor.color = SpecialColors.GetSecondColor();
+        liveBarColor.color = SpecialColors.GetFirstColor();
     }
 }
