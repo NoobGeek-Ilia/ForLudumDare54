@@ -1,33 +1,29 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class CharacterAnimation : MonoBehaviour
 {
-    float moveSpeed = 0.8f;
-    public Vector3[] targetPositions; // Массив целевых позиций
-    Quaternion startRotation;
-    [SerializeField] Animator animator;
-    int animState;
-    [SerializeField] Transform[] target;
-    [SerializeField] Transform runPoint;
-    [SerializeField] Door door;
+    public Vector3[] targetPositions;
+
+    private float moveSpeed = 0.8f;
+    private Quaternion startRotation;
+    private int animState;
+
     internal protected Action onButtonPressed;
     internal protected Action onSaved;
-    [SerializeField] OpenDoorButton openDoorButton;
-    [SerializeField] GameManager gameManager;
 
-    [SerializeField] CharacterLiveController characterLiveController;
-    [SerializeField] GameOverPanel gameOverPanel;
-    [SerializeField] GameObject PanicPic;
-   
+    [SerializeField] private Animator animator;
+    [SerializeField] private Transform[] target;
+    [SerializeField] private Transform runPoint;
+    [SerializeField] private Door door;
+    [SerializeField] private OpenDoorButton openDoorButton;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private CharacterLiveController characterLiveController;
+    [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private GameObject PanicPic;
 
-    private void Update()
-    {
-    }
-
-    void Start()
+    private void Start()
     {
         startRotation = Quaternion.Euler(0, -69.761f, 0);
         StartCoroutine(PlayAnimation());
@@ -37,7 +33,7 @@ public class CharacterAnimation : MonoBehaviour
         gameOverPanel.onReseted += ResetCharacter;
     }
 
-    IEnumerator PlayAnimation()
+    private IEnumerator PlayAnimation()
     {
         while (animState != 3)
         {
@@ -79,7 +75,7 @@ public class CharacterAnimation : MonoBehaviour
     }
 
 
-    IEnumerator WalkToTarget(Vector3 target)
+    private IEnumerator WalkToTarget(Vector3 target)
     {
         animator.SetBool("Walk", true);
         bool reachedTarget = false;

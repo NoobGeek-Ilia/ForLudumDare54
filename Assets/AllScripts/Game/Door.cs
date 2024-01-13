@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    float distanceToMove = 0.5f;
-    float openTime = 1f; // ¬рем€ открыти€/закрыти€ (в секундах)
-    [SerializeField] Transform rightDoor;
-    [SerializeField] Transform leftDoor;
+    private float distanceToMove = 0.5f;
+    private float openTime = 1f;
+
     internal protected Action onDoorClosed;
     internal protected Action onDoorOpened;
-    [SerializeField] CharacterAnimation characterAnimation;
-    [SerializeField] OpenDoorButton openDoor;
-    [SerializeField] GameOverPanel gameOverPanel;
+
+    [SerializeField] private Transform rightDoor;
+    [SerializeField] private Transform leftDoor;
+    [SerializeField] private CharacterAnimation characterAnimation;
+    [SerializeField] private OpenDoorButton openDoor;
+    [SerializeField] private GameOverPanel gameOverPanel;
 
     private void Start()
     {
@@ -30,9 +32,7 @@ public class Door : MonoBehaviour
     }
 
     private IEnumerator OpenCoroutine(bool open)
-    {//все перепутано
-        Debug.Log("corunine");
-        
+    {
         Vector3 startPosRight = rightDoor.position;
         Vector3 startPosLeft = leftDoor.position;
         Vector3 endPosRight, endPosLeft;
@@ -69,6 +69,5 @@ public class Door : MonoBehaviour
             onDoorOpened?.Invoke();
             
         }
-        
     }
 }

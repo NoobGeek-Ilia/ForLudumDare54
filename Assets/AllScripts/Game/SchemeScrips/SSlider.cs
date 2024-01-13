@@ -1,11 +1,11 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SSlider : MonoBehaviour
 {
-    private Slider[] sliders;
     internal protected static int[] sliderValues;
+
+    private Slider[] sliders;
 
     internal protected void InitBoxButtons()
     {
@@ -25,7 +25,6 @@ public class SSlider : MonoBehaviour
             int randomValue = Random.Range(0, (int)sliders[i].maxValue + 1);
             sliderValues[i] = randomValue;
             sliders[i].value = sliderValues[i];
-            Debug.Log($"slider {sliderValues[i]}");
         }
     }
 }

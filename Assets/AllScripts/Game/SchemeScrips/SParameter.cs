@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class SParameter : MonoBehaviour
 {
-    private Toggle[] parameters;
     internal protected static bool[] isActive;
+
+    private Toggle[] parameters;
 
     internal protected void InitBoxButtons()
     {
@@ -19,7 +20,6 @@ public class SParameter : MonoBehaviour
             float value = Random.value;
             isActive[i] = value > 0.5f;
             parameters[i].isOn = value > 0.5f;
-            Debug.Log($"parametr {isActive[i]}");
         }
     }
 }

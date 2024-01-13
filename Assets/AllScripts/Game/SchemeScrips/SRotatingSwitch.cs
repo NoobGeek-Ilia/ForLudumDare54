@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SRotatingSwitch : MonoBehaviour
-{
-    private Button[] buttons;
-
-    const int maxValue = 7;
+{  
     internal protected static int[] position;
+
+    private const int maxValue = 7;
+    private Button[] buttons;
 
     internal protected void InitBoxButtons()
     {
@@ -24,7 +24,6 @@ public class SRotatingSwitch : MonoBehaviour
             int rotationValue = -45 * value;
             Quaternion targetRotation = Quaternion.Euler(0, 0, rotationValue);
             buttons[i].transform.rotation = targetRotation;
-            Debug.Log($"rotat {position[i]}");
         }
     }
 }

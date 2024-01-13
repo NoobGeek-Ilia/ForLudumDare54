@@ -1,24 +1,29 @@
 using System;
 using System.Collections;
-using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Door door;
-    [SerializeField] Animator animator;
-    [SerializeField] CharacterLiveController characterLiveController;
-    [SerializeField] GameObject gameoverPanel;
-    [SerializeField] GameObject schemePanel;
-    GameOverPanel gameOver;
-    [SerializeField] FillSchemePanel fillSchemePanel;
-    [SerializeField] OpenDoorButton openDoorButton;
-    [SerializeField] CharacterAnimation characterAnimation;
-    [SerializeField] TextMeshProUGUI counterTxt;
-    [SerializeField] GameObject PanicPic;
-    [SerializeField] CFloorButtons floorButtons;
+    private GameOverPanel gameOver;
     private int counter;
+
+    internal protected Action onBoxFull;
+
+    [SerializeField] private Door door;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterLiveController characterLiveController;
+    [SerializeField] private GameObject gameoverPanel;
+    [SerializeField] private GameObject schemePanel;
+    
+    [SerializeField] private FillSchemePanel fillSchemePanel;
+    [SerializeField] private OpenDoorButton openDoorButton;
+    [SerializeField] private CharacterAnimation characterAnimation;
+    [SerializeField] private TextMeshProUGUI counterTxt;
+    [SerializeField] private GameObject PanicPic;
+    [SerializeField] private CFloorButtons floorButtons;
+    [SerializeField] private Transform[] parentBox;
+    [SerializeField] private GameObject[] buttonPrefab;
 
     internal protected readonly static int[,] buttonNum = 
     { 
@@ -45,11 +50,6 @@ public class GameManager : MonoBehaviour
         }
     }
     internal protected static int currState;
-
-    [SerializeField] Transform[] parentBox;
-
-    [SerializeField] GameObject[] buttonPrefab;
-    internal protected Action onBoxFull;
 
     private void Start()
     {
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             LevelUp();
         };
     }
-    void LevelUp()
+    private void LevelUp()
     {
         counter++;
         for (int i = 1; i < buttonNum.GetLength(1); i++)
@@ -87,16 +87,12 @@ public class GameManager : MonoBehaviour
                 LevelNum++;
         }
         counterTxt.text = counter.ToString();
-        Debug.Log($"numlevel: {LevelNum}");
     }
-    IEnumerator RemoveAndSetButtons()
+    private IEnumerator RemoveAndSetButtons()
     {
         RemoveAllChildren();
         fillSchemePanel.RemoveAllChildren();
-
-        // Подождать некоторое время перед инициализацией новых элементов
         yield return new WaitForSeconds(0.1f);
-
         SetButtons();
     }
     internal protected void SetButtons()
@@ -106,12 +102,11 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < buttonNum[i, levelNum]; j++)
             {
                 GameObject button = Instantiate(buttonPrefab[i], parentBox[i]);
-                //button.transform.SetParent(parentBox[i], true);/
             }
         }
         onBoxFull?.Invoke();
     }
-    IEnumerator OpenGameOverPanel()
+    private IEnumerator OpenGameOverPanel()
     {
         yield return new WaitForSeconds(3f);
         gameoverPanel.SetActive(true);

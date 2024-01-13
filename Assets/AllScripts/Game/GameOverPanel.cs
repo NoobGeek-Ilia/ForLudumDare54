@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class GameOverPanel : MonoBehaviour
 {
-    [SerializeField] GameObject gameOverPanel;
     internal protected Action onReseted;
+
+    [SerializeField] private GameObject gameOverPanel;
+    
     public void CloseGameOverPanel()
     {
         onReseted?.Invoke();
         gameOverPanel.SetActive(false);
-       
     }
 }

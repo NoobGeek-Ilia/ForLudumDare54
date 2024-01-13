@@ -3,20 +3,22 @@ using UnityEngine;
 
 public class FillSchemePanel : MonoBehaviour
 {
-    [SerializeField] Transform[] parentBox;
-    [SerializeField] GameObject[] buttonPrefab;
-    [SerializeField] GameOverPanel gameOverPanel;
-    [SerializeField] Door door;
     internal protected Action onBoxFull;
-    bool boxIsFull;
 
+    private bool boxIsFull;
+
+    [SerializeField] private Transform[] parentBox;
+    [SerializeField] private GameObject[] buttonPrefab;
+    [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private Door door;
+   
     private void Start()
     {
         door.onDoorClosed += () => boxIsFull = false;
     }
+
     public void SetButtons()
     {
-        Debug.Log($"isFull: {boxIsFull}");
         if (!boxIsFull)
         {
             boxIsFull = true;
@@ -40,6 +42,5 @@ public class FillSchemePanel : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
-        
     }
 }

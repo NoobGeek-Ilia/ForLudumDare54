@@ -1,17 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpecialColors : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI typeCountTxt;
-    private static int tipe = 0;
-    string[] colorTypeName = { "N, T", "P, D", "U"};
-
-    private void Start()
-    {
-        typeCountTxt.text = "N, T";
-    }
     public static int ColorType
     {
         get
@@ -27,6 +18,15 @@ public class SpecialColors : MonoBehaviour
         }
     }
 
+    private static int tipe = 0;
+    private string[] colorTypeName = { "N, T", "P, D", "U" };
+
+    [SerializeField] private TextMeshProUGUI typeCountTxt;
+
+    private void Start()
+    {
+        typeCountTxt.text = "N, T";
+    }
 
     public void ChangeColor()
     {

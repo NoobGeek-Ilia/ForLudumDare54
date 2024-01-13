@@ -5,21 +5,21 @@ using UnityEngine.UI;
 
 public class CharacterLiveController : MonoBehaviour
 {
-    [SerializeField] Slider hpBar;
-    [SerializeField] Door door;
-    [SerializeField] GameObject liveBar;
-    [SerializeField] CharacterAnimation CharacterAnimation;
-    [SerializeField] GameOverPanel gameOverPanel;
-    [SerializeField] OpenDoorButton openDoorButton;
-    [SerializeField] Image liveBarColor;
-
-    int maxHp = 400;
-    int currHelth;
-    int painLevelValue = 1;
+    private int maxHp = 400;
+    private int currHelth;
+    private int painLevelValue = 1;
+    private bool isPanic = false;
 
     internal protected Action onDead;
     internal protected static bool playerIsDead;
-    bool isPanic = false;
+
+    [SerializeField] private Slider hpBar;
+    [SerializeField] private Door door;
+    [SerializeField] private GameObject liveBar;
+    [SerializeField] private CharacterAnimation CharacterAnimation;
+    [SerializeField] private GameOverPanel gameOverPanel;
+    [SerializeField] private OpenDoorButton openDoorButton;
+    [SerializeField] private Image liveBarColor;
 
     private void Start()
     {
@@ -32,23 +32,22 @@ public class CharacterLiveController : MonoBehaviour
         onDead += () => playerIsDead = true;
     }
 
-    void StartHpController()
+    private void StartHpController()
     {
         painLevelValue = 2;
         isPanic = true;
         liveBar.SetActive(true);
         StartCoroutine(HpController());
-
     }
 
-    void CalmDown()
+    private void CalmDown()
     {
         isPanic = false;
         liveBar.SetActive(false);
         ResetLive();
     }
 
-    IEnumerator HpController()
+    private IEnumerator HpController()
     {
         while (currHelth > 0 && isPanic)
         {

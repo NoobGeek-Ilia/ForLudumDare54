@@ -17,7 +17,6 @@ public class ValueManager
         {
             if (SParameter.isActive[i] != CParameter.isActive[i])
                 return false;
-            Debug.Log($"left: {CParameter.isActive[i]}, right: {SParameter.isActive[i]}");
         }
         return true;
     }

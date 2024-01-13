@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class SOpenDoorButton : MonoBehaviour
 {
-    [SerializeField] SOnOffSwitch onOffSwitch;
-    [SerializeField] SFloorButtons floorButtons;
-    [SerializeField] SToggleSwitch toggleSwitch;
-    [SerializeField] SParameter parameter;
-    [SerializeField] SSlider slider;
-    [SerializeField] SRotatingSwitch rotatingSwitch;
-
-
+    [SerializeField] private SOnOffSwitch onOffSwitch;
+    [SerializeField] private SFloorButtons floorButtons;
+    [SerializeField] private SToggleSwitch toggleSwitch;
+    [SerializeField] private SParameter parameter;
+    [SerializeField] private SSlider slider;
+    [SerializeField] private SRotatingSwitch rotatingSwitch;
 }

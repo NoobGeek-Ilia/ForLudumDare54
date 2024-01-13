@@ -1,5 +1,3 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -7,6 +5,7 @@ using Random = UnityEngine.Random;
 public class SFloorButtons : MonoBehaviour
 {
     public Button[] buttons;
+
     internal protected static int currFloorIndex;
 
     private void Start()

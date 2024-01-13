@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class CToggleSwitch : MonoBehaviour
 {
-    private Button[] buttons; // Используем private, так как мы будем заполнять его дочерними объектами
-    [SerializeField] Sprite left;
-    [SerializeField] Sprite right;
-
     internal protected static bool[] isRight;
+
+    private Button[] buttons; // Используем private, так как мы будем заполнять его дочерними объектами
+
+    [SerializeField] private Sprite left;
+    [SerializeField] private Sprite right;
 
     internal protected void InitBoxButtons()
     {
@@ -23,11 +24,6 @@ public class CToggleSwitch : MonoBehaviour
             buttons[index].image.sprite = right;
         else
             buttons[index].image.sprite = left;
-
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            Debug.Log($"{i}: {isRight[i]}");
-        }
         SoundManager.instance.PlaySFX("ToggleButton");
     }
 

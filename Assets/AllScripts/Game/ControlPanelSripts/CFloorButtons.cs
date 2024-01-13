@@ -1,11 +1,13 @@
 using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class CFloorButtons : MonoBehaviour
 {
     public Button[] buttons;
+
     internal protected static int currFloorIndex;
+
     private void Start()
     {
         foreach (Button button in buttons)
@@ -14,16 +16,14 @@ public class CFloorButtons : MonoBehaviour
         }
     }
 
-    void OnButtonClick(Button currButton)
+    private void OnButtonClick(Button currButton)
     {
         ResertColor();
         currButton.image.color = SpecialColors.GetSecondColor();
         currFloorIndex = Array.IndexOf(buttons, currButton);
-        Debug.Log(currFloorIndex);
         SoundManager.instance.PlaySFX("FloorButton");
     }
 
-    //временное решение сброса цвета кнопок этажа
     internal protected void ResertColor()
     {
         foreach (Button button in buttons)

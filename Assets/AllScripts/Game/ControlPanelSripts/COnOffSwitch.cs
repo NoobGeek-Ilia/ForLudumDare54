@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class COnOffSwitch : MonoBehaviour
 {
-    Button[] buttons;
-    internal protected static bool[] isActive;
+    private Button[] buttons;
 
+    internal protected static bool[] isActive;
     internal protected void InitBoxButtons()
     {
         buttons = GetComponentsInChildren<Button>();
@@ -16,6 +16,7 @@ public class COnOffSwitch : MonoBehaviour
         }
         GetSelectedButton();
     }
+
     private void ChangeColor(int index)
     {
         isActive[index] = !isActive[index];
@@ -23,12 +24,6 @@ public class COnOffSwitch : MonoBehaviour
             buttons[index].image.color = SpecialColors.GetSecondColor();
         else
             buttons[index].image.color = SpecialColors.GetFirstColor();
-
-
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            Debug.Log($"{i}: {isActive[i]}");
-        }
         SoundManager.instance.PlaySFX("OnOffButton");
     }
 

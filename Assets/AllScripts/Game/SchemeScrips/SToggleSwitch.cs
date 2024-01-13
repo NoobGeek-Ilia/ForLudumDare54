@@ -3,11 +3,12 @@ using UnityEngine.UI;
 
 public class SToggleSwitch : MonoBehaviour
 {
-    private Button[] buttons;
-    [SerializeField] Sprite left;
-    [SerializeField] Sprite right;
-
     internal protected static bool[] isRight;
+
+    private Button[] buttons;
+
+    [SerializeField] private Sprite left;
+    [SerializeField] private Sprite right;
 
     internal protected void InitBoxButtons()
     {
@@ -26,7 +27,6 @@ public class SToggleSwitch : MonoBehaviour
                 buttons[i].image.sprite = right;
             else
                 buttons[i].image.sprite = left;
-            Debug.Log($"Toggle {isRight[i]}");
         }
     }
 }

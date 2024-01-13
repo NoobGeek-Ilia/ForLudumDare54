@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class CRotatingSwitch : MonoBehaviour
 {
-    private Button[] buttons;
-
-    const float rotationStep = 45.0f;
     internal protected static int[] position;
+
+    private Button[] buttons;
+    private const float rotationStep = 45.0f;
     private float[] currentRotation;
 
     internal protected void InitBoxButtons()
@@ -35,10 +35,6 @@ public class CRotatingSwitch : MonoBehaviour
         position[index]++;
         if (position[index] > 7)
             position[index] = 0;
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            Debug.Log($"{i}: {position[i]}");
-        }
         SoundManager.instance.PlaySFX("RotateButton");
     }
 }

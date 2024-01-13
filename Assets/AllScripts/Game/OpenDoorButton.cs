@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class OpenDoorButton : MonoBehaviour
 {
-    
-    ValueManager valueManager = new ValueManager();
     public bool Door;
+
     internal protected static bool doorIsOpen;
     internal protected Action onSystemIsFixed;
-    [SerializeField] GameObject schemePanel;
-    [SerializeField] Door door;
-    [SerializeField] GameObject PanicPic;
+
+    private ValueManager valueManager = new ValueManager();
+
+    [SerializeField] private GameObject schemePanel;
+    [SerializeField] private Door door;
+    [SerializeField] private GameObject PanicPic;
 
     private void Start()
     {
@@ -33,7 +35,5 @@ public class OpenDoorButton : MonoBehaviour
             Debug.Log("ERROR");
             SoundManager.instance.PlaySFX("ErrorEffect");
         }
-
-        Debug.Log($"doorIsOpen: {doorIsOpen}");
     }
 }

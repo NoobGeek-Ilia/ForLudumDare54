@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class InitPanelsButtons : MonoBehaviour
 {
-    [SerializeField] GameManager gameManager;
-    [SerializeField] FillSchemePanel fillSchemePanel;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private FillSchemePanel fillSchemePanel;
 
-    [SerializeField] COnOffSwitch ConOffSwitch;
-    [SerializeField] CParameter Cparameter;
-    [SerializeField] CRotatingSwitch CrotatingSwitch;
-    [SerializeField] CSlider Cslider;
-    [SerializeField] CToggleSwitch CtoggleSwitch;
+    [SerializeField] private COnOffSwitch ConOffSwitch;
+    [SerializeField] private CParameter Cparameter;
+    [SerializeField] private CRotatingSwitch CrotatingSwitch;
+    [SerializeField] private CSlider Cslider;
+    [SerializeField] private CToggleSwitch CtoggleSwitch;
 
-    [SerializeField] SOnOffSwitch SonOffSwitch;
-    [SerializeField] SParameter Sparameter;
-    [SerializeField] SRotatingSwitch SrotatingSwitch;
-    [SerializeField] SSlider Sslider;
-    [SerializeField] SToggleSwitch StoggleSwitch;
-    [SerializeField] SFloorButtons SfloorButtons;
+    [SerializeField] private SOnOffSwitch SonOffSwitch;
+    [SerializeField] private SParameter Sparameter;
+    [SerializeField] private SRotatingSwitch SrotatingSwitch;
+    [SerializeField] private SSlider Sslider;
+    [SerializeField] private SToggleSwitch StoggleSwitch;
+    [SerializeField] private SFloorButtons SfloorButtons;
 
     private void Start()
     {
@@ -38,5 +38,4 @@ public class InitPanelsButtons : MonoBehaviour
             SfloorButtons.InitBoxButtons();
         };
     }
-
 }

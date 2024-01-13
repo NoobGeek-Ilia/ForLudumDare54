@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class SOnOffSwitch : MonoBehaviour
 {
-    private Button[] buttons;
     internal protected static bool[] isActive;
+
+    private Button[] buttons;
 
     internal protected void InitBoxButtons()
     {
@@ -23,7 +24,6 @@ public class SOnOffSwitch : MonoBehaviour
                 buttons[i].image.color = SpecialColors.GetSecondColor();
             else
                 buttons[i].image.color = SpecialColors.GetFirstColor();
-            Debug.Log($"onOff {isActive[i]}");
         }
     }
 }

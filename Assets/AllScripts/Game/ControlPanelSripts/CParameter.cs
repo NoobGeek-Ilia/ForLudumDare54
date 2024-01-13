@@ -3,12 +3,14 @@ using UnityEngine.UI;
 
 public class CParameter : MonoBehaviour
 {
-    private Toggle[] parameters;
     internal protected static bool[] isActive;
+
+    private Toggle[] parameters;
+
     internal protected void InitBoxButtons()
     {
         parameters = GetComponentsInChildren<Toggle>();
-        isActive = new bool[parameters.Length]; // »нициализируем массив
+        isActive = new bool[parameters.Length];
 
         SetStartValue();
 
@@ -40,7 +42,6 @@ public class CParameter : MonoBehaviour
         for (int i = 0; i < parameters.Length; i++)
         {
             string message = isActive[i] ? "включена" : "выключена";
-            Debug.Log($"ячейка {i}: галочка {message}");
         }
     }
 }

@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class CSlider : MonoBehaviour
 {
-    private Slider[] sliders;
     internal protected static float[] sliderValues;
+
+    private Slider[] sliders;
 
     internal protected void InitBoxButtons()
     {
@@ -14,7 +15,6 @@ public class CSlider : MonoBehaviour
         {
             int index = i;
             sliders[i].onValueChanged.AddListener((float value) => OnSliderValueChanged(index, value));
-            Debug.Log($"slider {sliderValues[i]}");
         }
     }
 
